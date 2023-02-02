@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        *{
+            margin: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        p{
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Psychic Game</h1>
+    <p id="qelebe">Qələbə sayınız: </p>
+    <p id="meglub">Məğlubiyyət sayınız: </p>
+    <p id="shans">Cəmi qalan şansınız: </p>
+    <p id="sizinSechim">Sizin seçimləriniz: </p>
+    <script>
+        const shansiniz = document.getElementById("shans")
+        const sechim = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r','s', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        var letters = [];
+        var los = 0;
+        var win = 0;
+        var shans = 10;
+        //var shan = 10;
+        
+        function generateRandom() {
+            let randomlet = Math.floor(Math.random() * sechim.length);
+            //let randomLetterIndex = Math.floor(Math.random() * sechim.length);
+            return sechim[randomlet];
+        }
+        function bashla() {
+            shans = 10;
+            istsec.innerHTML = " ";
+            compsec = generateRandom();
+        }
+
+        window.addEventListener("keyup", function (e) {
+
+            if (sechim.includes(e.key)) {
+                istsec = document.getElementById("sizinSechim").innerHTML;
+                if (istsec.includes(e.key)) {
+                    this.alert(`${e.key} bunu əvvəlcədən seçmisiniz.`)
+                } else {
+                    istsec = document.getElementById("sizinSechim").innerHTML += e.key + ",";
+
+                    if (e.key == compsec) {
+                        win += 1;
+                        document.getElementById("qelebe").innerText = win;
+                        this.alert("Təbrik edirəm qazandınız!!")
+                        bashla();
+                    } else {
+                        if (shans > 0) {
+                            shans -= 1;
+                            document.getElementById("shans").innerText = shans;
+                        } else {
+                            los += 1
+                            document.getElementById("meglub").innerText = los;
+                            this.alert("Təəssüf şansınız bitdi!")
+                            bashla();
+                        }
+                    }
+                }
+
+            } else {
+                alert("Seçim etmədiniz axı!")
+            }
+        })
+    </script>
+</body>
+
+</html>
