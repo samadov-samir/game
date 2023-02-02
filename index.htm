@@ -44,6 +44,7 @@
             istsec.innerHTML = " ";
             compsec = generateRandom();
         }
+        var compsec = generateRandom();
 
         window.addEventListener("keyup", function (e) {
 
@@ -54,12 +55,19 @@
                 } else {
                     istsec = document.getElementById("sizinSechim").innerHTML += e.key + ",";
 
-                    if (e.key == compsec) {
+                    if (e.key === compsec) {
                         win += 1;
                         document.getElementById("qelebe").innerText = win;
                         this.alert("Təbrik edirəm qazandınız!!")
                         bashla();
                     } else {
+
+                    //     if (e.key === compsec) {
+                    //     win += 1;
+                    //     document.getElementById("qelebe").innerText = win;
+                    //     this.alert("Təbrik edirəm qazandınız!!")
+                    //     bashla();
+                    // } else {
                         if (shans > 0) {
                             shans -= 1;
                             document.getElementById("shans").innerText = shans;
